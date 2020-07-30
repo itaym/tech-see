@@ -1,0 +1,7 @@
+.Header {
+    width: 100%;
+    line-height: 75px;
+    text-align: left;
+    padding-left: 20px;
+    box-shadow: grey 0 0 10px;
+}

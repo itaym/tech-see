@@ -1,68 +1,57 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Home Assignment
+## Background
+Your goal will be to write a simple UI page that searches for a tester and presents a sorted
+list of results.
 
-## Available Scripts
+## Assignment
+Write an application that will approach a backend to fetch the information about a
+particular tester.
+The page will look as follows:
+- Title: Search Bugs
+- Below: a text input field. Label: Tester Name, watermark: “Enter the tester name”
+- Below: a button with the label “Fetch”
+The text field cannot be empty, the “Fetch” button will be enabled only if the field is filled.
+The minimum input length is 2 characters, and maximum input length is 12 characters.
+The text field will be colored red if violated.
+## Search
+- The search request is an HTTPs GET request to the server (see address below),
+taking 1 input parameter. The input param, testerName, represents the first name
+of the requested tester (case insensitive)
+- Invalid requests with no testerName or with wrong URL will return HTTP 4XX error
+codes
+- A valid request is approaching the correct URL with an input param. It will return
+HTTP 200 code, with the following data:
+o If the requested tester is found, it will return a json object of the following
+format (example given):
+```{
+    firstName: “xxx”,
+    lastName: “yyy”,
+    country: “Israel”,
+    bugs: [{
+        id: 1,
+        title: “sample bug”
+    }, {
+        id: 2,
+        title: “sample bug 2”
+    }
+}
+```
+- - If the requested tester is not found, the response will be empty
+- - A special case – where the input is the word “all” (case insensitive), a list of
+all testers is returned
 
-In the project directory, you can run:
+## Results Display
 
-### `npm start`
+Create a results table with the following columns:
+First Name, Last Name, Country, Bugs
+Follow the below rules:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. If the response includes an error, display a red error message above the table:
+“Temporary error occurred, please try again later”
+2. If the response is OK, display the results in the table. The “Bugs” column will display
+a comma-delimited list of the bug titles
+3. The table will be sorted by default by tester first name (ascending), and it should be
+enabled to sort the table by last name or country
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Server URL:
+https://test-api.techsee.me/api/ex/{testerName}# Dillinger

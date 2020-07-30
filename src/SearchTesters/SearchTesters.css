@@ -1,0 +1,30 @@
+.SearchTesters {
+    padding: 0 100px;
+}
+.search-testers input,
+.search-testers label {
+    margin: 10px;
+}
+#testers-name {
+    width: 180px;
+}
+.search-testers {
+    margin-top: 20px;
+}
+.search-testers .disabled {
+    cursor: not-allowed;
+}
+h2 {
+    transform: rotate(45deg);
+    position: absolute;
+    color: navy;
+    top: 63px;
+    right: 0;
+
+}
+.error {
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    transform: translateX(-50%);
+}
