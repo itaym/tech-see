@@ -5,9 +5,6 @@ import { sortTesters } from "../redux/actions";
 
 class TestersTable extends PureComponent {
 
-    state = {
-        sortBy: 'firstName'};
-
     isSorted = (orderBy) => {
         const { sortBy } = this.props;
         return orderBy === sortBy;
@@ -19,7 +16,6 @@ class TestersTable extends PureComponent {
 
     onSort = (sortBy) => {
         return () => {
-            //this.setState((state) => ({...state, sortBy}));
             const { dispatch } = this.props;
             dispatch(sortTesters(sortBy));
         }
