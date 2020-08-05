@@ -6,8 +6,8 @@ import './SearchTesters.css';
 class SearchTesters extends PureComponent {
 
     state = {
-        fetchButtonOK: false,
-        sortBy: 'firstName'};
+        fetchButtonOK: false
+    };
 
     searchTesters =() => {
         const { fetchButtonOK } = this.state;
@@ -64,7 +64,7 @@ class SearchTesters extends PureComponent {
 }
 
 const mapStateToProps = state => {
-    return state;
+    return { error: state.error };
 };
 
 export default connect(mapStateToProps)(SearchTesters);
